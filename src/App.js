@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { ListOfCategories } from './components/ListOfCategories'
 import { GlobalStyles } from './GlobalStyles'
 
 export const App = () => (
-  <Fragment>
+  <div>
     <GlobalStyles />
     <ListOfCategories />
-  </Fragment>
+  </div>
 )
