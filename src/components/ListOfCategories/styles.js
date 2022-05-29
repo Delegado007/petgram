@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const List = styled.ul`
-  display: flex;
+  display: flex;  
   overflow: scroll;
   width: 100%;
 `
