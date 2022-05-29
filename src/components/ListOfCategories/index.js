@@ -4,7 +4,6 @@ import { List, Item } from './styles'
 import data from './../../../api_fake/db.json'
 
 export const ListOfCategories = () => {
-
   return (
     <List>
       {
