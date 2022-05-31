@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Category } from '../Category'
 import { List, Item } from './styles'
 
-function useCategoriesData () {
+function useCategoriesData() {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -37,7 +37,7 @@ export const ListOfCategories = () => {
         {
           loading
             ? <Item key='loading'><Category /></Item>
-            : categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
+            : categories.map(category => <Item key={category.id}><Category {...category} path={`/pet/${category.id}`} /></Item>)
         }
       </List>
 

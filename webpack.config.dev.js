@@ -5,6 +5,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'main.js',
     pathinfo: false
   },
@@ -36,7 +37,6 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist')
     },
-    compress: true,
     port: 3006,
     historyApiFallback: true
   }
