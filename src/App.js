@@ -19,9 +19,9 @@ export const App = () => {
       <GlobalStyles />
       <Logo />
       <Routes>
-        <Route path='/' element={<Home />} />
         <Route path='/pet/:id' element={<Home />} />
         <Route path='/detail/:detailId' element={<Detail />} />
+        <Route exact path='/' element={<Home />} />
       </Routes>
       <Context.Consumer>
         {
@@ -29,7 +29,7 @@ export const App = () => {
             isAuth
               ? <Routes>
                 <Route path='/favs' element={<Favs />} />
-                <Route path='/user' element={<User />} />
+                <Route path='user' element={<User />} />
               </Routes>
               : <Routes>
                 <Route path='/favs' element={<NotRegisteredUser />} />
