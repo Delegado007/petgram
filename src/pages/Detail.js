@@ -6,7 +6,14 @@ export const Detail = () => {
   const { detailId } = useParams();
   console.log(detailId)
   return (
-    <PhotoCardWhitQuery id={detailId} />
+    <>
+      <Helmet>
+        <title>{`Fotografia ${detailId} | Petgram`}</title>
+        <meta name='description' content={`Descripción de la fotografia ${detailId}`} />
+      </Helmet>
+      <PhotoCardWhitQuery id={detailId} />
+
+    </>
   )
 }
 

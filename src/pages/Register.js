@@ -4,6 +4,8 @@ import { UserForm } from "../components/UserForm";
 import { REGISTER } from "../api/queries";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet'
+
 
 export const Register = () => {
   const { activateAuth } = useContext(Context)
@@ -25,6 +27,10 @@ export const Register = () => {
   }
   return (
     <>
+      <Helmet>
+        <title>{`Registro | Petgram`}</title>
+        <meta name='description' content={`Registrate en Petgram`} />
+      </Helmet>
       <UserForm title='Registrarse' error={errorMsg} onSubmit={onSubmit} disabled={loadingRegister} />
       <span>Ya tienes cuenta? <Link to="/login">Login</Link></span>
     </>
