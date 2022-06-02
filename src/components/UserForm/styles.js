@@ -5,6 +5,7 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
+  background-color: rgba(141, 0, 255, .05);
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 8px;
@@ -14,6 +15,9 @@ export const Input = styled.input`
   &:focus {
     outline: none;
     border: 1px solid #8d00ff
+  }
+  &:disabled {
+    opacity: .3;
   }
 `
 
@@ -25,10 +29,18 @@ export const Button = styled.button`
   display: block;
   width: 100%;
   text-align: center;
+  &:disabled {
+    opacity: .3;
+  }
 `
 
 export const Title = styled.h2`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   padding: 8px 0;
+`
+
+export const Error = styled.span`
+  color: red;
+  font-size: 14px;
 `

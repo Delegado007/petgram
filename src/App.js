@@ -7,7 +7,8 @@ import { Detail } from './pages/Detail';
 import { NavBar } from './components/NavBar';
 import { Favs } from './pages/Favs';
 import { User } from './pages/User';
-import { NotRegisteredUser } from './pages/NotRegisteredUser';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
 import Context from './context';
 
 
@@ -29,11 +30,15 @@ export const App = () => {
             isAuth
               ? <Routes>
                 <Route path='/favs' element={<Favs />} />
-                <Route path='user' element={<User />} />
+                <Route path='/user' element={<User />} />
+                <Route path='/login' element={<Favs />} />
+                <Route path='/register' element={<Favs />} />
               </Routes>
               : <Routes>
-                <Route path='/favs' element={<NotRegisteredUser />} />
-                <Route path='/user' element={<NotRegisteredUser />} />
+                <Route path='/favs' element={<Login />} />
+                <Route path='/user' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/login' element={<Login />} />
               </Routes>
         }
       </Context.Consumer>
