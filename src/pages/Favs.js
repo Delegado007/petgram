@@ -2,7 +2,7 @@ import React from 'react';
 import { RenderProp } from '../container/GetFavorites';
 import { Helmet } from 'react-helmet'
 
-export const Favs = () => {
+export default () => {
   return (
     <>
       <Helmet>

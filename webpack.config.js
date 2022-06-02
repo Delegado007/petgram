@@ -8,7 +8,6 @@ module.exports = {
     filename: 'main.js',
     pathinfo: false
   },
-  mode: 'production',
   resolve: {
     extensions: ['.js', '.jsx']
   },

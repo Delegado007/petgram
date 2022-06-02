@@ -4,7 +4,7 @@ import { ListOfPhotoCards } from './../components/ListOfPhotoCards'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-export const Home = () => {
+export const HomePage = () => {
   const { id } = useParams();
   return (
     <Fragment>
@@ -17,3 +17,6 @@ export const Home = () => {
     </Fragment>
   )
 }
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  return (prevProps.id === props.id)
+})

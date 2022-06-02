@@ -9,7 +9,6 @@ module.exports = {
     filename: 'main.js',
     pathinfo: false
   },
-  mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx']
   },
