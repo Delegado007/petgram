@@ -4,9 +4,27 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="apple-touch-icon" href="/assets/touch-icon.png" />
         <title>Petgram</title>
     </head>
     <body>
         <div id="app"></div>
+        <noscript>
+            <h3>Esta App necesita Javascript para anunciar</h3>
+        </noscript>
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                    navigator.serviceWorker
+                        .register("/service-worker.js")
+                        .then((registration) => {
+                            console.log("SW registrado");
+                        })
+                        .catch((registratioError) => {
+                            console.log("SW error: ", registratioError);
+                        });
+                });
+            }
+        </script>
     </body>
 </html>
