@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackPwaManifestPlugin = require('webpack-pwa-manifest')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -11,6 +12,7 @@ module.exports = {
     filename: 'main.js',
     pathinfo: false
   },
+  mode: 'production',
   resolve: {
     extensions: ['.js', '.jsx']
   },
@@ -82,10 +84,16 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "src", "assets/touch-icon.png"),
+          from: path.resolve(__dirname, "src", "assets"),
           to: "assets"
         }
       ]
-    })
-  ]
+    }),
+  ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+    ]
+  }
 }
