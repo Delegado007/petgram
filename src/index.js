@@ -1,11 +1,39 @@
 import React from 'react'
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloProvider, InMemoryCache, from, HttpLink } from '@apollo/client'
+import { onError } from "@apollo/client/link/error";
 import { App } from './App'
 import { createRoot } from 'react-dom/client'
 import Context from './context'
+import { setContext } from '@apollo/client/link/context'
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors && graphQLErrors[0].message === 'you must be logged in to perform this action') {
+    window.location.href = '/login'
+  }
+  if (networkError && networkError.result.code === 'invalid_token') {
+    window.sessionStorage.removeItem('token')
+    window.location.href = '/login'
+  };
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = window.sessionStorage.getItem('token')
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    }
+  }
+})
 
 const client = new ApolloClient({
-  uri: 'https://api-petgram-875dq86v1-delegado007.vercel.app/graphql',
+  link: from([
+    authLink,
+    errorLink,
+    new HttpLink({
+      uri: 'https://api-petgram-875dq86v1-delegado007.vercel.app/graphql'
+    })
+  ]),
   cache: new InMemoryCache()
 })
 
