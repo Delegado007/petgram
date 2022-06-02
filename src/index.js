@@ -7,7 +7,11 @@ import Context from './context'
 import { setContext } from '@apollo/client/link/context'
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors && graphQLErrors[0].message === 'you must be logged in to perform this action') {
+  console.log(graphQLErrors)
+  console.log(networkError)
+
+  if (graphQLErrors && graphQLErrors[0].message === 'you must be logged in to perform this action' || graphQLErrors[0].message === 'user does not exist') {
+    window.sessionStorage.removeItem('token')
     window.location.href = '/login'
   }
   if (networkError && networkError.result.code === 'invalid_token') {
